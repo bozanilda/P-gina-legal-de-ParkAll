@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permisos de Ubicación - ParkAll</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>¿Por qué ParkAll solicita tu ubicación?</h1>
+            <p class="description">
+                ParkAll solicita acceso a tu ubicación para ayudarte a encontrar cocheras cercanas de manera rápida y eficiente. 
+                Esto mejora tu experiencia y hace que estacionar sea más fácil.
+            </p>
+            <p class="terms">
+                Al dar permisos, aceptas nuestra <a href="/privacy-policy" target="_blank">Política de Privacidad</a> 
+                y nuestros <a href="/terms-of-service" target="_blank">Términos de Servicio</a>.
+            </p>
+            <button class="btn" onclick="darPermisos()">Dar permisos</button>
+        </div>
+    </div>
+
+    <script>
+        function darPermisos() {
+            const confirmation = confirm("¿Quieres conceder permisos de ubicación?");
+            if (confirmation) {
+                alert("Permisos concedidos. ¡Gracias!");
+            } else {
+                alert("No se otorgaron permisos.");
+            }
+        }
+    </script>
+</body>
+</html>
