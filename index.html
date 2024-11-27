@@ -3,34 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permisos de Ubicación - ParkAll</title>
+    <title>Bienvenido - ParkAll</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="content">
-            <h1>¿Por qué ParkAll solicita tu ubicación?</h1>
-            <p class="description">
-                ParkAll solicita acceso a tu ubicación para ayudarte a encontrar cocheras cercanas de manera rápida y eficiente. 
-                Esto mejora tu experiencia y hace que estacionar sea más fácil.
-            </p>
-            <p class="terms">
-                Al dar permisos, aceptas nuestra <a href="privacy-policy.html">Política de Privacidad</a> 
-                y nuestros <a href="terms-of-service.html">Términos de Servicio</a>.
-            </p>
-            <button class="btn" onclick="darPermisos()">Dar permisos</button>
+        <h1>Bienvenido a Nuestra Página</h1>
+        <p>Presiona el botón para ver nuestra política de privacidad o términos de servicio.</p>
+        <button class="btn" onclick="showModal('privacidad')">Ver Política de Privacidad</button>
+        <button class="btn btn-secondary" onclick="showModal('terminos')">Ver Términos de Servicio</button>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <p id="modal-body"></p>
+            <button class="btn btn-close" onclick="closeModal()">Cerrar</button>
         </div>
     </div>
 
     <script>
-        function darPermisos() {
-            const confirmation = confirm("¿Quieres conceder permisos de ubicación?");
-            if (confirmation) {
-                alert("Permisos concedidos. ¡Gracias!");
-            } else {
-                alert("No se otorgaron permisos.");
+        const modalContent = {
+            privacidad: {
+                title: "Política de Privacidad",
+                body: `
+                    <strong>1. Información que Recopilamos</strong><br>
+                    Recopilamos información personal como nombre, dirección de correo electrónico y ubicación, solo con tu consentimiento.
+                    Esta información es necesaria para ofrecerte nuestros servicios de la mejor manera posible.<br><br>
+                    
+                    <strong>2. Uso de la Información</strong><br>
+                    La información recopilada se utiliza para personalizar tu experiencia, mejorar nuestro servicio y ofrecerte opciones de cocheras cercanas.
+                    Nunca compartimos tus datos con terceros sin tu consentimiento explícito.<br><br>
+                    
+                    <strong>3. Seguridad de tus Datos</strong><br>
+                    Hemos implementado medidas avanzadas de seguridad para proteger tu información personal de accesos no autorizados. Tu privacidad es nuestra prioridad.<br><br>
+                    
+                    <strong>4. Tus Derechos</strong><br>
+                    Tienes derecho a acceder, modificar y solicitar la eliminación de tus datos en cualquier momento. Contáctanos si deseas ejercer estos derechos.<br><br>
+                    
+                    Si tienes preguntas adicionales, no dudes en contactarnos a través de nuestro soporte técnico.
+                `
+            },
+            terminos: {
+                title: "Términos de Servicio",
+                body: `
+                    <strong>1. Aceptación de los Términos</strong><br>
+                    Al usar nuestra plataforma, aceptas cumplir con estos términos. Si no estás de acuerdo, te pedimos que no utilices nuestros servicios.<br><br>
+                    
+                    <strong>2. Uso de la Plataforma</strong><br>
+                    - El servicio está diseñado para ayudarte a encontrar cocheras cercanas. <br>
+                    - No garantizamos disponibilidad constante del servicio debido a posibles interrupciones técnicas.<br><br>
+                    
+                    <strong>3. Responsabilidades del Usuario</strong><br>
+                    - El usuario debe proporcionar información precisa y actualizada. <br>
+                    - No nos hacemos responsables de pérdidas derivadas del uso incorrecto de la plataforma.<br><br>
+                    
+                    <strong>4. Cambios en los Términos</strong><br>
+                    ParkAll se reserva el derecho de modificar estos términos en cualquier momento. Se notificará a los usuarios sobre cambios significativos.<br><br>
+                    
+                    Si tienes dudas, ponte en contacto con nuestro equipo de soporte.
+                `
             }
+        };
+
+        function showModal(type) {
+            const modal = document.getElementById("modal");
+            document.getElementById("modal-title").innerHTML = modalContent[type].title;
+            document.getElementById("modal-body").innerHTML = modalContent[type].body;
+            modal.classList.remove("hidden");
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.classList.add("hidden");
         }
     </script>
 </body>
